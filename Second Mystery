@@ -1,0 +1,40 @@
+I created a second folder, this time in Power Shell and when I attempted to move my folder from the user desktop folder to the local desktop folder the computer deleted my file again?!
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\Alexi> cd desktop
+PS C:\Users\Alexi\desktop> mkdir Git_Repository
+
+
+    Directory: C:\Users\Alexi\desktop
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          6/4/2025   3:36 PM                Git_Repository
+
+
+PS C:\Users\Alexi\desktop> move "Git_Repository" "$env:USERPROFILE\Desktop"
+PS C:\Users\Alexi\desktop> dir
+
+
+    Directory: C:\Users\Alexi\desktop
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          6/4/2025   3:21 PM              2 terminal-commands.txt
+
+
+PS C:\Users\Alexi\desktop> move Git_Repository "%USERPROFILE%\Desktop"
+move : Cannot find path 'C:\Users\Alexi\desktop\Git_Repository' because it does not exist.
+At line:1 char:1
++ move Git_Repository "%USERPROFILE%\Desktop"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\Alexi\desktop\Git_Repository:String) [Move-Item], ItemNotFound
+   Exception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.MoveItemCommand
+
+PS C:\Users\Alexi\desktop>
